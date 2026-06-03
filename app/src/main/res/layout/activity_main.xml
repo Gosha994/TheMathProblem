@@ -1,19 +1,371 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:background="@color/bg_dark"
+    android:padding="8dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- ===== TOP BAR ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:orientation="horizontal"
+        android:background="#1f1f1f"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="6dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_margin="2dp"
+            android:background="#323232"
+            android:src="@drawable/ic_menu"
+            android:scaleType="centerInside"
+            android:contentDescription="Menu" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/btnGame"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_margin="2dp"
+            android:background="#323232"
+            android:src="@drawable/ic_tree"
+            android:scaleType="centerInside"
+            android:contentDescription="Games" />
+
+        <ImageButton
+            android:id="@+id/btnLogin"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_margin="2dp"
+            android:background="#323232"
+            android:src="@drawable/ic_person"
+            android:scaleType="centerInside"
+            android:contentDescription="Login" />
+
+        <ImageButton
+            android:id="@+id/btnLoad"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_margin="2dp"
+            android:background="#323232"
+            android:src="@drawable/ic_floppy"
+            android:scaleType="centerInside"
+            android:contentDescription="Load data" />
+
+    </LinearLayout>
+
+    <!-- ===== DISPLAY ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.2"
+        android:orientation="vertical"
+        android:background="@color/btn_dark"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvMemory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/memory_indicator"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-light" />
+
+        <TextView
+            android:id="@+id/tvExpression"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text=""
+            android:textColor="#888888"
+            android:textSize="18sp"
+            android:gravity="end|bottom"
+            android:fontFamily="sans-serif-light"
+            android:ellipsize="start"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/tvDisplay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="52sp"
+            android:gravity="end"
+            android:fontFamily="sans-serif-light"
+            android:ellipsize="start"
+            android:singleLine="true"
+            android:paddingBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvGameMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FF6B6B"
+            android:textSize="12sp"
+            android:gravity="end"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- ===== MEMORY ROW ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp">
+
+        <Button android:id="@+id/btnMC"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="MC" android:textColor="@color/memory_indicator"
+            android:textSize="14sp" android:backgroundTint="@color/btn_mem"
+            android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnMR"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="MR" android:textColor="@color/memory_indicator"
+            android:textSize="14sp" android:backgroundTint="@color/btn_mem"
+            android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnMS"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="MS" android:textColor="@color/memory_indicator"
+            android:textSize="14sp" android:backgroundTint="@color/btn_mem"
+            android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnMPlus"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="M+" android:textColor="@color/memory_indicator"
+            android:textSize="14sp" android:backgroundTint="@color/btn_mem"
+            android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnMMinus"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="M-" android:textColor="@color/memory_indicator"
+            android:textSize="14sp" android:backgroundTint="@color/btn_mem"
+            android:fontFamily="sans-serif-light" />
+
+    </LinearLayout>
+
+    <!-- ===== ROW: DEL CE C +/- sqrt ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp">
+
+        <Button android:id="@+id/btnDel"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="@string/btn_del"
+            android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnCE"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="CE"
+            android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnC"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="C"
+            android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnPlusMinus"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="@string/btn_plus_minus"
+            android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnRoot"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="@string/btn_root"
+            android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_op" android:fontFamily="sans-serif-light" />
+
+    </LinearLayout>
+
+    <!-- ===== ROW: 1 2 3 + % ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp">
+
+        <Button android:id="@+id/btn1"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="1" android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btn2"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="2" android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btn3"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="3" android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnPlus"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="+" android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_op" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnPercent"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="%" android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_op" android:fontFamily="sans-serif-light" />
+
+    </LinearLayout>
+
+    <!-- ===== ROW: 4 5 6 - 1/x ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp">
+
+        <Button android:id="@+id/btn4"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="4" android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btn5"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="5" android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btn6"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="6" android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnMinus"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="@string/btn_minus"
+            android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_op" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnInverse"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="1/x" android:textColor="@color/white" android:textSize="18sp"
+            android:backgroundTint="@color/btn_op" android:fontFamily="sans-serif-light" />
+
+    </LinearLayout>
+
+    <!-- ===== ROW: 7 8 9 * = ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp">
+
+        <Button android:id="@+id/btn7"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="7" android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btn8"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="8" android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btn9"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="9" android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnMultiply"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="@string/btn_multiply"
+            android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_op" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnEqual"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="=" android:textColor="@color/white" android:textSize="26sp"
+            android:backgroundTint="#1B5E20" android:fontFamily="sans-serif-light" />
+
+    </LinearLayout>
+
+    <!-- ===== ROW: 0 . / (empty) ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp">
+
+        <Button android:id="@+id/btn0"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="2" android:layout_margin="3dp"
+            android:text="0" android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnDot"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="." android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_dark" android:fontFamily="sans-serif-light" />
+
+        <Button android:id="@+id/btnDivide"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:layout_margin="3dp"
+            android:text="@string/btn_divide"
+            android:textColor="@color/white" android:textSize="22sp"
+            android:backgroundTint="@color/btn_op" android:fontFamily="sans-serif-light" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</LinearLayout>

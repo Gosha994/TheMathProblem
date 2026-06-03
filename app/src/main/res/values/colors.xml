@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="bg_dark">#1a1a1a</color>
+    <color name="btn_dark">#323232</color>
+    <color name="btn_hover">#404040</color>
+    <color name="btn_pressed">#282828</color>
+    <color name="white">#FFFFFF</color>
+    <color name="accent">#BB86FC</color>
+    <color name="btn_op">#2a2a4a</color>
+    <color name="btn_equal">#1a3a1a</color>
+    <color name="btn_mem">#1a1a2a</color>
+    <color name="memory_indicator">#BB86FC</color>
 </resources>
