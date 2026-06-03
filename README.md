@@ -15,13 +15,11 @@ Android-порт калькулятора с Python/PyQt6 на Java для Andro
 
 ## Установка
 
-1. Откройте Android Studio
-2. File → Open → выберите папку `CalculatorApp`
-3. Дождитесь синхронизации Gradle
-4. Run → Run 'app'
+1. Откройте релизы проекта
+2. Скачайте .apk файл
+3. Установите скачанный файл
+4. Готово!
 
 ## Требования
 
-- Android Studio Hedgehog или новее
-- minSdk 24 (Android 7.0+)
-- Java 8
+- Android 7.0+
